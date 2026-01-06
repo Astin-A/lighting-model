@@ -11,5 +11,11 @@ config_version=5
 [application]
 
 config/name="lighting model"
+run/main_scene="uid://drblm3tlnft8h"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=2

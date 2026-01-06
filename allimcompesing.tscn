@@ -1,8 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://drblm3tlnft8h"]
+[gd_scene load_steps=6 format=3 uid="uid://drblm3tlnft8h"]
 
+[ext_resource type="Script" uid="uid://c7m7va2oqfba6" path="res://directional_light_3d.gd" id="1_6ol7e"]
 [ext_resource type="ArrayMesh" uid="uid://d6jow38qljdg" path="res://3dModels/balls-small.obj" id="1_i3dh2"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3dh2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6ol7e"]
+sky_material = SubResource("ProceduralSkyMaterial_i3dh2")
+
+[sub_resource type="Environment" id="Environment_bhc5j"]
+background_mode = 1
+background_color = Color(0.06053035, 0.06053035, 0.060530342, 1)
+sky = SubResource("Sky_6ol7e")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.62387955, 0.7815205, 0, -0.7815205, 0.62387955, 0, 0, 0)
+light_energy = 1.165
+light_indirect_energy = 1.165
+shadow_enabled = true
+sky_mode = 1
+script = ExtResource("1_6ol7e")
+rotation_speed = 15.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bhc5j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_i3dh2")

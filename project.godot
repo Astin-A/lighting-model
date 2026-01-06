@@ -15,7 +15,16 @@ run/main_scene="uid://drblm3tlnft8h"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
+
 [rendering]
 
-anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/screen_space_aa=2

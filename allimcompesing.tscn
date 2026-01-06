@@ -35,38 +35,38 @@ environment = SubResource("Environment_bhc5j")
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 250, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 250, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, -250, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, -200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, -250, 0)
 mesh = ExtResource("1_i3dh2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 424.7945)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 555)
 near = 0.06
 far = 3996.85

@@ -74,6 +74,8 @@ render_priority = 0
 shader = ExtResource("9_4txnh")
 shader_parameter/albedo = Color(0.045, 0.939, 0.296, 1)
 shader_parameter/roughness = 0.5
+shader_parameter/specular_strength = 1.0
+shader_parameter/sheen = 0.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rfbt6"]
 render_priority = 0
@@ -96,11 +98,19 @@ rotation_speed = 15.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bhc5j")
 
+[node name="CameraMain" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 555)
+near = 0.06
+far = 3996.85
+
 [node name="MeshInstance3D1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 250, 0)
 lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("StandardMaterial3D_ylh6n")
+
+[node name="CameraDeafult" type="Camera3D" parent="MeshInstance3D1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7315369, -2.5173035, 100)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
@@ -108,11 +118,17 @@ lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_3bv86")
 
+[node name="CameraLambertian" type="Camera3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 250, 0)
 lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_48sv2")
+
+[node name="CameraFlat" type="Camera3D" parent="MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, 0)
@@ -120,10 +136,16 @@ lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_2j84f")
 
+[node name="CameraToon" type="Camera3D" parent="MeshInstance3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_i3eoa")
+
+[node name="CameraGouraudPhong" type="Camera3D" parent="MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
@@ -131,11 +153,17 @@ lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_4txnh")
 
+[node name="CameraPhong" type="Camera3D" parent="MeshInstance3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, -250, 0)
 lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_4xfro")
+
+[node name="CameraBlinnPhong" type="Camera3D" parent="MeshInstance3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
@@ -143,13 +171,14 @@ lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_ecq82")
 
+[node name="CameraOrenNayar" type="Camera3D" parent="MeshInstance3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, -250, 0)
 lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("ShaderMaterial_rfbt6")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 555)
-near = 0.06
-far = 3996.85
+[node name="CameraCookTorrance" type="Camera3D" parent="MeshInstance3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)

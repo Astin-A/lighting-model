@@ -10,14 +10,24 @@ config_version=5
 
 [application]
 
-config/name="lighting model"
+config/name="lighting model demo"
+config/version="1.0"
 run/main_scene="uid://drblm3tlnft8h"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+boot_splash/fullsize=false
+config/windows_native_icon="res://ball2_86511.ico"
 
 [autoload]
 
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -25,6 +35,8 @@ enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
 [rendering]
 
+rendering_device/fallback_to_opengl3=false
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/smaa_edge_detection_threshold=0.06999999999999999
 anti_aliasing/quality/screen_space_aa=2

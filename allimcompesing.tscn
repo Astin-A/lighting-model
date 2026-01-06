@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://drblm3tlnft8h"]
+[gd_scene load_steps=24 format=3 uid="uid://drblm3tlnft8h"]
 
 [ext_resource type="Script" uid="uid://c7m7va2oqfba6" path="res://directional_light_3d.gd" id="1_6ol7e"]
+[ext_resource type="Script" uid="uid://d0333qp0ik0s3" path="res://Cameras.gd" id="1_ecq82"]
 [ext_resource type="ArrayMesh" uid="uid://d6jow38qljdg" path="res://3dModels/balls-small.obj" id="1_i3dh2"]
 [ext_resource type="Shader" uid="uid://blsvmn556wu0j" path="res://Shaders/Lambert.gdshader" id="3_bhc5j"]
 [ext_resource type="Shader" uid="uid://cd7kkscpwj4dn" path="res://Shaders/Flat.gdshader" id="4_ylh6n"]
@@ -85,6 +86,7 @@ shader_parameter/roughness = 0.35
 shader_parameter/metallic = 0.5
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_ecq82")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9975641, 0.06975647, 0, -0.044838596, 0.6412219, 0.76604444, 0.053436555, -0.7641784, 0.64278764, 0, 0, 0)
@@ -110,7 +112,13 @@ mesh = ExtResource("1_i3dh2")
 surface_material_override/0 = SubResource("StandardMaterial3D_ylh6n")
 
 [node name="CameraDeafult" type="Camera3D" parent="MeshInstance3D1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7315369, -2.5173035, 100)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="Deafult" type="Label3D" parent="MeshInstance3D1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Deafult"
+outline_size = 20
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
@@ -121,6 +129,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_3bv86")
 [node name="CameraLambertian" type="Camera3D" parent="MeshInstance3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
+[node name="Lambertian" type="Label3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Lambertian"
+outline_size = 20
+
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 250, 0)
 lod_bias = 128.0
@@ -129,6 +143,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_48sv2")
 
 [node name="CameraFlat" type="Camera3D" parent="MeshInstance3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="Flat" type="Label3D" parent="MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Flat"
+outline_size = 20
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, 0)
@@ -139,6 +159,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_2j84f")
 [node name="CameraToon" type="Camera3D" parent="MeshInstance3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
+[node name="Toon" type="Label3D" parent="MeshInstance3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Toon"
+outline_size = 20
+
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
@@ -146,6 +172,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_i3eoa")
 
 [node name="CameraGouraudPhong" type="Camera3D" parent="MeshInstance3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="GouraudPhong" type="Label3D" parent="MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Gouraud Phong"
+outline_size = 20
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
@@ -156,6 +188,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_4txnh")
 [node name="CameraPhong" type="Camera3D" parent="MeshInstance3D6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
+[node name="Phong" type="Label3D" parent="MeshInstance3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Phong"
+outline_size = 20
+
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, -250, 0)
 lod_bias = 128.0
@@ -164,6 +202,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_4xfro")
 
 [node name="CameraBlinnPhong" type="Camera3D" parent="MeshInstance3D7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="BlinnPhong" type="Label3D" parent="MeshInstance3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Blinn Phong"
+outline_size = 20
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
@@ -174,6 +218,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_ecq82")
 [node name="CameraOrenNayar" type="Camera3D" parent="MeshInstance3D8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
+[node name="OrenNayar" type="Label3D" parent="MeshInstance3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Oren Nayar"
+outline_size = 20
+
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, -250, 0)
 lod_bias = 128.0
@@ -182,3 +232,9 @@ surface_material_override/0 = SubResource("ShaderMaterial_rfbt6")
 
 [node name="CameraCookTorrance" type="Camera3D" parent="MeshInstance3D9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="CookTorrance" type="Label3D" parent="MeshInstance3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 0)
+pixel_size = 0.3
+text = "Cook Torrance"
+outline_size = 20

@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://drblm3tlnft8h"]
+[gd_scene load_steps=23 format=3 uid="uid://drblm3tlnft8h"]
 
 [ext_resource type="Script" uid="uid://c7m7va2oqfba6" path="res://directional_light_3d.gd" id="1_6ol7e"]
 [ext_resource type="ArrayMesh" uid="uid://d6jow38qljdg" path="res://3dModels/balls-small.obj" id="1_i3dh2"]
+[ext_resource type="Shader" uid="uid://blsvmn556wu0j" path="res://Shaders/Lambert.gdshader" id="3_bhc5j"]
+[ext_resource type="Shader" uid="uid://cd7kkscpwj4dn" path="res://Shaders/Flat.gdshader" id="4_ylh6n"]
+[ext_resource type="Shader" uid="uid://ek8vsfts8wgt" path="res://Shaders/Toon.gdshader" id="5_3bv86"]
+[ext_resource type="Shader" uid="uid://bx45fyvgsyu5i" path="res://Shaders/Gouraud-Phong.gdshader" id="6_48sv2"]
+[ext_resource type="Shader" uid="uid://ij13evfikelf" path="res://Shaders/Phong.gdshader" id="7_2j84f"]
+[ext_resource type="Shader" uid="uid://bkdv1ky2466xy" path="res://Shaders/Blinn-Phong.gdshader" id="8_i3eoa"]
+[ext_resource type="Shader" uid="uid://242pjke4s142" path="res://Shaders/Oren-Nayar.gdshader" id="9_4txnh"]
+[ext_resource type="Shader" uid="uid://dtitn8dti1nk4" path="res://Shaders/Cook-Torrance.gdshader" id="10_4xfro"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3dh2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -12,15 +20,72 @@ sky_material = SubResource("ProceduralSkyMaterial_i3dh2")
 
 [sub_resource type="Environment" id="Environment_bhc5j"]
 background_mode = 1
-background_color = Color(0.06053035, 0.06053035, 0.060530342, 1)
+background_color = Color(0.11858135, 0.11858139, 0.11858138, 1)
 sky = SubResource("Sky_6ol7e")
 tonemap_mode = 2
-glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylh6n"]
+albedo_color = Color(0.23529412, 0.972549, 0.5803922, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bv86"]
+render_priority = 0
+shader = ExtResource("3_bhc5j")
+shader_parameter/albedo_color = Color(0.045, 0.939, 0.296, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48sv2"]
+render_priority = 0
+shader = ExtResource("4_ylh6n")
+shader_parameter/albedo_color = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/glossiness = 32.0
+shader_parameter/specular_strength = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2j84f"]
+render_priority = 0
+shader = ExtResource("5_3bv86")
+shader_parameter/albedo_color = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/shadow_color = Color(0, 0.1, 0.05, 1)
+shader_parameter/shadow_cut = 0.0
+shader_parameter/mid_tone_cut = 0.7
+shader_parameter/smoothness = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3eoa"]
+render_priority = 0
+shader = ExtResource("6_48sv2")
+shader_parameter/albedo_color = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/shininess = 32.0
+shader_parameter/specular_strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4txnh"]
+render_priority = 0
+shader = ExtResource("7_2j84f")
+shader_parameter/albedo_color = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/shininess = 32.0
+shader_parameter/specular_strength = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xfro"]
+render_priority = 0
+shader = ExtResource("8_i3eoa")
+shader_parameter/albedo_color = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/glossiness = 64.0
+shader_parameter/specular_intensity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecq82"]
+render_priority = 0
+shader = ExtResource("9_4txnh")
+shader_parameter/albedo = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/roughness = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfbt6"]
+render_priority = 0
+shader = ExtResource("10_4xfro")
+shader_parameter/albedo = Color(0.045, 0.939, 0.296, 1)
+shader_parameter/roughness = 0.35
+shader_parameter/metallic = 0.5
 
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.62387955, 0.7815205, 0, -0.7815205, 0.62387955, 0, 0, 0)
+transform = Transform3D(0.9975641, 0.06975647, 0, -0.044838596, 0.6412219, 0.76604444, 0.053436555, -0.7641784, 0.64278764, 0, 0, 0)
 light_energy = 1.165
 light_indirect_energy = 1.165
 shadow_enabled = true
@@ -31,40 +96,58 @@ rotation_speed = 15.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bhc5j")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("StandardMaterial3D_ylh6n")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_3bv86")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_48sv2")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 250, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 0, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_2j84f")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_i3eoa")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 250, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, 0, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_4txnh")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, -250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_4xfro")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, -250, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_ecq82")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, -250, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250, -250, 0)
+lod_bias = 128.0
 mesh = ExtResource("1_i3dh2")
+surface_material_override/0 = SubResource("ShaderMaterial_rfbt6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 555)
